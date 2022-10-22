@@ -2679,13 +2679,30 @@
 											"height": 13,
 											"text": "+tipoBaño: string",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGEAKGQGBsj2bw=",
+											"_parent": {
+												"$ref": "AAAAAAGEACYd4XskqjM="
+											},
+											"model": {
+												"$ref": "AAAAAAGEAKGQDRsaOik="
+											},
+											"font": "Arial;13;0",
+											"left": 205,
+											"top": 605,
+											"width": 97.92529296875,
+											"height": 13,
+											"text": "+id: string",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 200,
 									"top": 585,
 									"width": 107.92529296875,
-									"height": 23
+									"height": 38
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -2698,7 +2715,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 200,
-									"top": 608,
+									"top": 623,
 									"width": 107.92529296875,
 									"height": 10
 								},
@@ -2740,7 +2757,7 @@
 							"left": 200,
 							"top": 560,
 							"width": 107.92529296875,
-							"height": 58,
+							"height": 73,
 							"nameCompartment": {
 								"$ref": "AAAAAAGEACYd4HsfkLk="
 							},
@@ -2801,6 +2818,7 @@
 									"font": "Arial;13;0",
 									"left": 260,
 									"top": 506,
+
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -2822,6 +2840,7 @@
 									"font": "Arial;13;0",
 									"left": 298,
 									"top": 529,
+
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -2840,6 +2859,7 @@
 							},
 							"lineStyle": 1,
 							"points": "269:559;304:497",
+
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGEACb2AIIJ8xI="
@@ -3283,6 +3303,15 @@
 								"$ref": "AAAAAAGEACYd4Hsco6k="
 							},
 							"name": "tipoBaño",
+							"type": "string"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGEAKGQDRsaOik=",
+							"_parent": {
+								"$ref": "AAAAAAGEACYd4Hsco6k="
+							},
+							"name": "id",
 							"type": "string"
 						}
 					]
