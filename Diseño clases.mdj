@@ -2628,13 +2628,30 @@
 											"height": 13,
 											"text": "+tipoBaño: string",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAGEAKGQGBsj2bw=",
+											"_parent": {
+												"$ref": "AAAAAAGEACYd4XskqjM="
+											},
+											"model": {
+												"$ref": "AAAAAAGEAKGQDRsaOik="
+											},
+											"font": "Arial;13;0",
+											"left": 205,
+											"top": 605,
+											"width": 97.92529296875,
+											"height": 13,
+											"text": "+id: string",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 200,
 									"top": 585,
 									"width": 107.92529296875,
-									"height": 23
+									"height": 38
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -2647,7 +2664,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 200,
-									"top": 608,
+									"top": 623,
 									"width": 107.92529296875,
 									"height": 10
 								},
@@ -2689,7 +2706,7 @@
 							"left": 200,
 							"top": 560,
 							"width": 107.92529296875,
-							"height": 58,
+							"height": 73,
 							"nameCompartment": {
 								"$ref": "AAAAAAGEACYd4HsfkLk="
 							},
@@ -2727,8 +2744,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 274,
-									"top": 506,
+									"left": 277,
+									"top": 507,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -2748,8 +2765,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 261,
-									"top": 499,
+									"left": 264,
+									"top": 500,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -2769,8 +2786,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 301,
-									"top": 521,
+									"left": 304,
+									"top": 520,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -2788,7 +2805,7 @@
 								"$ref": "AAAAAAGEACYd4Hseb5o="
 							},
 							"lineStyle": 1,
-							"points": "268:559;309:482",
+							"points": "272:559;310:482",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGEACb2AIIJ8xI="
@@ -2919,7 +2936,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGEABSb6lnmGjY="
 							},
-							"name": "id.string"
+							"name": "id.string",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2927,7 +2945,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGEABSb6lnmGjY="
 							},
-							"name": "nombre.string"
+							"name": "nombre.string",
+							"type": ""
 						}
 					]
 				},
@@ -2960,7 +2979,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGEABStAloQW1A="
 							},
-							"name": "id.string"
+							"name": "id.string",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -3002,7 +3022,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGEABTHrFo6eIY="
 							},
-							"name": "especializacion"
+							"name": "especializacion",
+							"type": ""
 						}
 					]
 				},
@@ -3066,7 +3087,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGEABTcP1pkhZw="
 							},
-							"name": "id.string"
+							"name": "id.string",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -3074,7 +3096,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGEABTcP1pkhZw="
 							},
-							"name": "fecha_Vencimiento"
+							"name": "fecha_Vencimiento",
+							"type": ""
 						}
 					]
 				},
@@ -3092,7 +3115,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGEABTwX1qOolw="
 							},
-							"name": "id.string"
+							"name": "id.string",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -3198,6 +3222,15 @@
 								"$ref": "AAAAAAGEACYd4Hsco6k="
 							},
 							"name": "tipoBaño",
+							"type": "string"
+						},
+						{
+							"_type": "UMLAttribute",
+							"_id": "AAAAAAGEAKGQDRsaOik=",
+							"_parent": {
+								"$ref": "AAAAAAGEACYd4Hsco6k="
+							},
+							"name": "id",
 							"type": "string"
 						}
 					]
