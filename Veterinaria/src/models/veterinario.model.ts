@@ -1,5 +1,6 @@
-import {model, property} from '@loopback/repository';
+import {model, property, hasMany} from '@loopback/repository';
 import {Persona} from '.';
+import {Mascota} from './mascota.model';
 
 @model()
 export class Veterinario extends Persona {
@@ -16,6 +17,8 @@ export class Veterinario extends Persona {
   })
   especializacion: string;
 
+  @hasMany(() => Mascota)
+  MascotasAcargo: Mascota[];
 
   constructor(data?: Partial<Veterinario>) {
     super(data);

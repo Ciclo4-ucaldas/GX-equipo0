@@ -23,6 +23,11 @@ export class Mascota extends Entity {
   @hasMany(() => Servicio)
   susServicios: Servicio[];
 
+  @property({
+    type: 'string',
+  })
+  veterinarioId?: string;
+
   constructor(data?: Partial<Mascota>) {
     super(data);
   }

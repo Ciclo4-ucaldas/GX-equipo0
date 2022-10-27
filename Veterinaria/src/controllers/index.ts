@@ -10,3 +10,4 @@ export * from './veterinario.controller';
 export * from './servicio.controller';
 export * from './bano.controller';
 export * from './vacuna.controller';
+export * from './veterinario-mascota.controller';
