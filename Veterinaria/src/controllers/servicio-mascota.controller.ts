@@ -60,8 +60,7 @@ export class ServicioMascotaController {
         'application/json': {
           schema: getModelSchemaRef(Mascota, {
             title: 'NewMascotaInServicio',
-            exclude: ['id'],
-            optional: ['servicioId']
+            exclude: ['id']
           }),
         },
       },
