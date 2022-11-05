@@ -57,9 +57,10 @@ export class AdministradorController {
      let asunto="Registro en la plataforma"
  //    let contenido="prueba"
      let contenido=`hola${administrador.nombre} ${administrador.apellidos} su usuario es:${administrador.usuario} y su contraseña temporal es: ${administrador.contrasena}`
-     let mensaje= this.mensajeriaService.envioMensajeEmail(destino,asunto,contenido);
+     let mensajeEmail= await this.mensajeriaService.envioMensajeEmail(destino,asunto,contenido);
+     let mensajeSMS= await this.mensajeriaService.envioMensajeSMS(administrador.celular,contenido);
     // return mensaje;
-     if(mensaje){
+     if(mensajeSMS&&mensajeEmail){
       return admin;
      }else{
       return new HttpErrors[400]("No se pudo mandar el correo al crear el Admin")
