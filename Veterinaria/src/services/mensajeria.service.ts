@@ -1,10 +1,9 @@
 import {injectable, /* inject, */ BindingScope} from '@loopback/core';
-const generator= require("password-generator")
+const generator= require('password-generator')
 const cryptoJS= require("crypto-js");
 const fetch = require("node-fetch");
 @injectable({scope: BindingScope.TRANSIENT})
 export class MensajeriaService {
-  envio:string="sin cambio"
   constructor(/* Add @inject to inject parameters */) {}
 
   /*
@@ -21,15 +20,25 @@ export class MensajeriaService {
   }
 
   envioMensajeEmail(destino:string,asunto:string,contenido:string){
-    //let envio=false
+    let envio=true
     fetch(`http://127.0.0.1:5000/email?correo_destino=${destino}&asunto=${asunto}&mensaje=${contenido}`)
     .then((result:any) => {
       console.log(result)
-      this.envio=result;
     }).catch((err:any) => {
       console.log(err);
-      this.envio=err;
+      envio=false;
     });
-    return this.envio;
+    return envio;
+  }
+  envioMensajeSMS(destino:string,mensaje:string){
+    let envio=true
+    fetch(`http://127.0.0.1:5000/sms?message=${mensaje}&phone=${destino}`)
+    .then((result:any) => {
+      console.log(result)
+    }).catch((err:any) => {
+      console.log(err);
+      envio=false;
+    });
+    return envio;
   }
 }
