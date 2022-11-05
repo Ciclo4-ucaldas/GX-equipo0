@@ -18,7 +18,7 @@ export class Administrador extends Persona {
 
   @property({
     type: 'string',
-    required: true,
+    required: false,
   })
   contrasena: string;
 

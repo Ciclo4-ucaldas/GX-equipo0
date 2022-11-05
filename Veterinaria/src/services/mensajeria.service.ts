@@ -1,5 +1,5 @@
 import {injectable, /* inject, */ BindingScope} from '@loopback/core';
-const generator= require("password-generator")
+const generator= require('password-generator')
 const cryptoJS= require("crypto-js");
 const fetch = require("node-fetch");
 @injectable({scope: BindingScope.TRANSIENT})
