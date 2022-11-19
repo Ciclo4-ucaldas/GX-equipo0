@@ -24,7 +24,7 @@ import {Veterinario} from '../models';
 import {VeterinarioRepository} from '../repositories';
 import { MensajeriaService } from '../services';
 
-@authenticate("veterinario")
+@authenticate("admin")
 export class VeterinarioController {
   constructor(
     @repository(VeterinarioRepository)
@@ -151,6 +151,7 @@ export class VeterinarioController {
     await this.veterinarioRepository.updateById(id, veterinario);
   }
 
+  @authenticate("admin","veterinario")
   @put('/veterinarios/{id}')
   @response(204, {
     description: 'Veterinario PUT success',
