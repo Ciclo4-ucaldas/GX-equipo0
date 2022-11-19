@@ -45,6 +45,18 @@ export class Persona extends Entity {
   })
   celular: string;
 
+  @property({
+    type: 'string',
+    required: true,
+  })
+  usuario: string;
+
+  @property({
+    type: 'string',
+    required: false,
+  })
+  contrasena: string;
+
 
   constructor(data?: Partial<Persona>) {
     super(data);

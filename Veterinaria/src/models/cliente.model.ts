@@ -12,18 +12,6 @@ export class Cliente extends Persona {
 
   @property({
     type: 'string',
-    required: true,
-  })
-  usuario: string;
-
-  @property({
-    type: 'string',
-    required: true,
-  })
-  contrasena: string;
-
-  @property({
-    type: 'string',
   })
   direccion?: string;
 
