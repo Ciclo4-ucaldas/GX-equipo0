@@ -1,3 +1,4 @@
+import { authenticate } from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -20,6 +21,7 @@ import {
 import {Vacuna} from '../models';
 import {VacunaRepository} from '../repositories';
 
+@authenticate("admin")
 export class VacunaController {
   constructor(
     @repository(VacunaRepository)

@@ -1,3 +1,4 @@
+import {authenticate} from '@loopback/authentication';
 import { service } from '@loopback/core';
 import {
   Count,
@@ -22,7 +23,7 @@ import {
 import {Administrador} from '../models';
 import {AdministradorRepository} from '../repositories';
 import { MensajeriaService } from '../services';
-
+@authenticate("admin")
 export class AdministradorController {
   constructor(
     @repository(AdministradorRepository)
@@ -78,6 +79,7 @@ export class AdministradorController {
     return this.administradorRepository.count(where);
   }
 
+  @authenticate("admins")
   @get('/administradores')
   @response(200, {
     description: 'Array of Administrador model instances',

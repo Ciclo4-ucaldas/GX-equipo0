@@ -9,6 +9,10 @@ import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
 import {MySequence} from './sequence';
+import {EstrategiaAdministrador} from './strategies/admin.strategy';
+import {AuthenticationComponent, registerAuthenticationStrategy} from '@loopback/authentication';
+import { EstrategiaCliente } from './strategies/cliente.strategy';
+import { EstrategiaVeterinario } from './strategies/veterinario.strategy';
 
 export {ApplicationConfig};
 
@@ -40,5 +44,9 @@ export class VeterinariaApplication extends BootMixin(
         nested: true,
       },
     };
+    registerAuthenticationStrategy(this,EstrategiaAdministrador);
+    registerAuthenticationStrategy(this,EstrategiaCliente);
+    registerAuthenticationStrategy(this,EstrategiaVeterinario);
+    this.component(AuthenticationComponent);
   }
 }
