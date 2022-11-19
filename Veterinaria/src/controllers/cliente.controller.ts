@@ -24,7 +24,7 @@ import {Cliente} from '../models';
 import {ClienteRepository} from '../repositories';
 import { MensajeriaService } from '../services';
 
-@authenticate("admin")
+@authenticate("admin","cliente")
 export class ClienteController {
   constructor(
     @repository(ClienteRepository)
