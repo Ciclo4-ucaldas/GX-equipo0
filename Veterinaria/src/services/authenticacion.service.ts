@@ -75,6 +75,7 @@ async  IdentificarPersona(usuario:string,contraseña:string){
    }else if(client){
     rol=client.constructor.name
    }
+   console.log(rol);
    let token =jwt.sign(
       {
         data:{

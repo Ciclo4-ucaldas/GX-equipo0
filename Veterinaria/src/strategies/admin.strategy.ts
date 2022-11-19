@@ -15,7 +15,7 @@ export class EstrategiaAdministrador implements AuthenticationStrategy {
   let token=parseBearerToken(request);
   if(token){
     let datos=this.servicioAuthenticacion.ValidarTokenJWT(token);
-    console.log(datos.data.rol)
+    console.log(datos.data.rol);
     if(datos.data.rol=="Administrador"){
     let perfil:UserProfile=Object.assign({
       nombre:datos.data.nombre,
