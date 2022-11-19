@@ -1,4 +1,5 @@
 import {injectable, /* inject, */ BindingScope} from '@loopback/core';
+import {Llaves} from '../config/Llaves';
 const generator= require('password-generator')
 const cryptoJS= require("crypto-js");
 const fetch = require("node-fetch");
@@ -21,7 +22,7 @@ export class MensajeriaService {
 
   envioMensajeEmail(destino:string,asunto:string,contenido:string){
     let envio=true
-    fetch(`http://127.0.0.1:5000/email?correo_destino=${destino}&asunto=${asunto}&mensaje=${contenido}`)
+    fetch(Llaves.urlServiceMicroservicePython+`email?correo_destino=${destino}&asunto=${asunto}&mensaje=${contenido}`)
     .then((result:any) => {
       console.log(result)
     }).catch((err:any) => {
@@ -32,7 +33,7 @@ export class MensajeriaService {
   }
   envioMensajeSMS(destino:string,mensaje:string){
     let envio=true
-    fetch(`http://127.0.0.1:5000/sms?message=${mensaje}&phone=${destino}`)
+    fetch(Llaves.urlServiceMicroservicePython+`sms?message=${mensaje}&phone=${destino}`)
     .then((result:any) => {
       console.log(result)
     }).catch((err:any) => {

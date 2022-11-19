@@ -1,3 +1,4 @@
+import { authenticate } from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -19,7 +20,7 @@ import {
 } from '@loopback/rest';
 import {Bano} from '../models';
 import {BanoRepository} from '../repositories';
-
+@authenticate("admin")
 export class BanoController {
   constructor(
     @repository(BanoRepository)

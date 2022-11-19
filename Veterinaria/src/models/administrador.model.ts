@@ -10,19 +10,6 @@ export class Administrador extends Persona {
   })
   id?: string;
 
-  @property({
-    type: 'string',
-    required: true,
-  })
-  usuario: string;
-
-  @property({
-    type: 'string',
-    required: false,
-  })
-  contrasena: string;
-
-
   constructor(data?: Partial<Administrador>) {
     super(data);
   }

@@ -1,3 +1,5 @@
+import { authenticate } from '@loopback/authentication';
+import { service } from '@loopback/core';
 import {
   Count,
   CountSchema,
@@ -16,16 +18,22 @@ import {
   del,
   requestBody,
   response,
+  HttpErrors,
 } from '@loopback/rest';
 import {Cliente} from '../models';
 import {ClienteRepository} from '../repositories';
+import { MensajeriaService } from '../services';
 
+@authenticate("admin")
 export class ClienteController {
   constructor(
     @repository(ClienteRepository)
     public clienteRepository : ClienteRepository,
+    @service(MensajeriaService)
+    public mensajeriaService :MensajeriaService
   ) {}
 
+  @authenticate("admin","cliente")
   @post('/clientes')
   @response(200, {
     description: 'Cliente model instance',
@@ -43,8 +51,23 @@ export class ClienteController {
       },
     })
     cliente: Omit<Cliente, 'id'>,
-  ): Promise<Cliente> {
-    return this.clienteRepository.create(cliente);
+  ): Promise<Cliente | any> {
+    let clave = this.mensajeriaService.Generarclave();
+    let claveCifrada=this.mensajeriaService.CifrarClave(clave);
+   cliente.contrasena=claveCifrada;
+     let client = await this.clienteRepository.create(cliente);
+     let destino=cliente.usuario;
+     let asunto="Registro en la plataforma"
+ //    let contenido="prueba"
+     let contenido=`hola${cliente.nombre} ${cliente.apellidos} su usuario es:${cliente.usuario} y su contraseña temporal es: ${cliente.contrasena}`
+     let mensajeEmail= await this.mensajeriaService.envioMensajeEmail(destino,asunto,contenido);
+     let mensajeSMS= await this.mensajeriaService.envioMensajeSMS(cliente.celular,contenido);
+    // return mensaje;
+     if(mensajeSMS&&mensajeEmail){
+      return client;
+     }else{
+      return new HttpErrors[400]("No se pudo mandar el correo al crear el cliente")
+     }
   }
 
   @get('/clientes/count')
@@ -95,6 +118,7 @@ export class ClienteController {
     return this.clienteRepository.updateAll(cliente, where);
   }
 
+  @authenticate("admin","cliente")
   @get('/clientes/{id}')
   @response(200, {
     description: 'Cliente model instance',
@@ -129,6 +153,7 @@ export class ClienteController {
     await this.clienteRepository.updateById(id, cliente);
   }
 
+  @authenticate("admin","cliente")
   @put('/clientes/{id}')
   @response(204, {
     description: 'Cliente PUT success',

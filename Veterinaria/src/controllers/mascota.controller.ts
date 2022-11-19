@@ -1,3 +1,4 @@
+import { authenticate } from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -20,12 +21,14 @@ import {
 import {Mascota} from '../models';
 import {MascotaRepository} from '../repositories';
 
+@authenticate("admin")
 export class MascotaController {
   constructor(
     @repository(MascotaRepository)
     public mascotaRepository : MascotaRepository,
   ) {}
 
+  @authenticate("admin","cliente")
   @post('/mascotas')
   @response(200, {
     description: 'Mascota model instance',
@@ -129,6 +132,7 @@ export class MascotaController {
     await this.mascotaRepository.updateById(id, mascota);
   }
 
+  @authenticate("admin","cliente")
   @put('/mascotas/{id}')
   @response(204, {
     description: 'Mascota PUT success',

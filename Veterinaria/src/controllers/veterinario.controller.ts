@@ -1,3 +1,5 @@
+import {authenticate} from '@loopback/authentication';
+import { service } from '@loopback/core';
 import {
   Count,
   CountSchema,
@@ -16,14 +18,19 @@ import {
   del,
   requestBody,
   response,
+  HttpErrors,
 } from '@loopback/rest';
 import {Veterinario} from '../models';
 import {VeterinarioRepository} from '../repositories';
+import { MensajeriaService } from '../services';
 
+@authenticate("admin")
 export class VeterinarioController {
   constructor(
     @repository(VeterinarioRepository)
     public veterinarioRepository : VeterinarioRepository,
+    @service(MensajeriaService)
+    public mensajeriaService :MensajeriaService
   ) {}
 
   @post('/veterinarios')
@@ -43,8 +50,23 @@ export class VeterinarioController {
       },
     })
     veterinario: Omit<Veterinario, 'id'>,
-  ): Promise<Veterinario> {
-    return this.veterinarioRepository.create(veterinario);
+  ): Promise<Veterinario | any> {
+    let clave = this.mensajeriaService.Generarclave();
+    let claveCifrada=this.mensajeriaService.CifrarClave(clave);
+   veterinario.contrasena=claveCifrada;
+     let veteri = await this.veterinarioRepository.create(veterinario);
+     let destino=veterinario.usuario;
+     let asunto="Registro en la plataforma"
+ //    let contenido="prueba"
+     let contenido=`hola${veterinario.nombre} ${veterinario.apellidos} su usuario es:${veterinario.usuario} y su contraseña temporal es: ${veterinario.contrasena}`
+     let mensajeEmail= await this.mensajeriaService.envioMensajeEmail(destino,asunto,contenido);
+     let mensajeSMS= await this.mensajeriaService.envioMensajeSMS(veterinario.celular,contenido);
+    // return mensaje;
+     if(mensajeSMS&&mensajeEmail){
+      return veteri;
+     }else{
+      return new HttpErrors[400]("No se pudo mandar el correo al crear el veteri")
+     }
   }
 
   @get('/veterinarios/count')
@@ -129,6 +151,7 @@ export class VeterinarioController {
     await this.veterinarioRepository.updateById(id, veterinario);
   }
 
+  @authenticate("admin","veterinario")
   @put('/veterinarios/{id}')
   @response(204, {
     description: 'Veterinario PUT success',

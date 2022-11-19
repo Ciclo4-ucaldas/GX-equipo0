@@ -6,3 +6,4 @@ export * from './mascota.model';
 export * from './servicio.model';
 export * from './bano.model';
 export * from './vacuna.model';
+export * from './credenciales.model';
