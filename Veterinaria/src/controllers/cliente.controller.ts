@@ -24,7 +24,7 @@ import {Cliente} from '../models';
 import {ClienteRepository} from '../repositories';
 import { MensajeriaService } from '../services';
 
-@authenticate("admin","cliente")
+@authenticate("admin")
 export class ClienteController {
   constructor(
     @repository(ClienteRepository)
@@ -33,6 +33,7 @@ export class ClienteController {
     public mensajeriaService :MensajeriaService
   ) {}
 
+  @authenticate("admin","cliente")
   @post('/clientes')
   @response(200, {
     description: 'Cliente model instance',
@@ -117,6 +118,7 @@ export class ClienteController {
     return this.clienteRepository.updateAll(cliente, where);
   }
 
+  @authenticate("admin","cliente")
   @get('/clientes/{id}')
   @response(200, {
     description: 'Cliente model instance',
@@ -151,6 +153,7 @@ export class ClienteController {
     await this.clienteRepository.updateById(id, cliente);
   }
 
+  @authenticate("admin","cliente")
   @put('/clientes/{id}')
   @response(204, {
     description: 'Cliente PUT success',
